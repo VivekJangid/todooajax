@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>AJAXTODO</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script>
+      jQuery(document).ready(function() {
+        jQuery("#GET").click(function() {
+          jQuery.ajax({
+            url: "http://localhost:5000/api",
+            type: "GET",
+            datatype: "JSON",
+            success: function(data) {
+              jQuery("#RESULT").append(data);
+            }
+          });
+        });
+        jQuery("#POST").click(function() {
+          jQuery.ajax({
+            url: "http://localhost:5000/api",
+            type: "POST",
+            datatype: "JSON",
+            data: {
+              name: $("#NAME").val(),
+              description: $("#DESCRIPTION").val()
+            },
+            success: function(data) {
+              alert("Successfull");
+            }
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <input type="text" name="name" id="NAME" />
+    <input type="text" name="description" id="DESCRIPTION" />
+    <button id="POST">POST</button>
+    <button id="GET">GET</button>
+    <button id="DELETE">DELETE</button>
+    <p id="RESULT"></p>
+  </body>
+</html>
